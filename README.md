@@ -9,7 +9,7 @@ After implementation it looks like this:
 #####User's monthly rate is not paid:
 ![ScreenShot](https://raw.githubusercontent.com/zweistift/froxlor-paypal/master/img/screens.png)
 
-#####User's monthly rate is paid, it offers to cancle the subscription:
+#####User's monthly rate is paid, it offers to cancel the subscription:
 ![ScreenShot](https://raw.githubusercontent.com/zweistift/froxlor-paypal/master/img/screens2.png)
 
 #Installtion
