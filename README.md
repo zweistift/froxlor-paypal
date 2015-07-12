@@ -22,12 +22,12 @@ Please make sure that you use the latest stable version of Froxlor (actually it 
 Execute **sql-preparations.sql** in mysql.
 
 
-##Create IPN Listener
+###Create IPN Listener
 Create a Paypal Business Acount and create a "instant payment notification" server.
 
 Create some subscription Buttons and save the code of the buttons place.
 
-##Add
+###Add
 ```
 <?php
 ?>
