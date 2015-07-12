@@ -1,5 +1,11 @@
-# froxlor-paypal
-Some Strings and Scripts to insert for enabling paypal Subscriptions in Froxlor Client Mode.
+# froxlor-paypal.
+
+Hi!
+
+I created a AddOn / Plugin for Foxlor with wich you can enable PayPal subscriptions in Froxlor. You clients can log in to their accounts an press "Subscripe with Paypal" and it automaticly shows you and them if their hosting-subscription is payed.
+
+It looks like this:
+
 
 
 
@@ -12,7 +18,10 @@ Create a Paypal Business Acount and create a "instant payment notification" serv
 Create some subscription Buttons and save the code of the buttons place.
 
 ##Add
-
+```
+<?php
+?>
+```
 
 
 
