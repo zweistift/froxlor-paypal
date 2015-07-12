@@ -1,8 +1,9 @@
 <?php
+// NOTE: THIS FILE IS PROPERTY OF PAYPAL. I INSERTED SOME SPECIFIC THINGS.
 // CONFIG: Enable debug mode. This means we'll log requests into 'ipn.log' in the same directory.
 // Especially useful if you encounter network errors or other intermittent problems with IPN (validation).
 // Set this to 0 once you go live or don't require logging.
-define("DEBUG", 1);
+define("DEBUG", 0);
 // Set to 0 once you're ready to go live
 define("USE_SANDBOX", 0);
 define("LOG_FILE", "./ipn.log");
@@ -90,6 +91,8 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	// check that payment_amount/payment_currency are correct
 	// process payment and mark item as paid.
 	// assign posted variables to local variables
+	
+//Define the vars, bq database will be filled. and no erros. haha.	
     $item_name = "";
     $item_number = "";
     $payment_amount = "";
@@ -105,61 +108,47 @@ if (strcmp ($res, "VERIFIED") == 0) {
     if (!empty($_POST["mc_gross"])) {$payment_amount = $_POST['mc_gross'];}
     if (!empty($_POST["mc_currency"])) {$payment_currency = $_POST['mc_currency'];}
     if (!empty($_POST["custom"])) {$client = $_POST['custom'];}
-    if (!empty($_POST["txn_type"])) {$txn_type = $_POST['txn_type'];}    
-	if (!empty($_POST["payer_id"])) {$payer_id = $_POST['payer_id'];} 
+    if (!empty($_POST["txn_type"])) {$txn_type = $_POST['txn_type'];}
+    if (!empty($_POST["payer_id"])) {$payer_id = $_POST['payer_id'];} 
     if (!empty($_POST["next_payment_date"])) {$next_payment_date = $_POST['next_payment_date'];} 
     if (!empty($_POST["time_created"])) {$time_created = $_POST['time_created'];} 
     if (!empty($_POST["recurring_payment_id"])) {$recurring_payment_id = $_POST['recurring_payment_id'];} 
     if (!empty($_POST["subscr_id"])) {$subscr_id = $_POST['subscr_id'];} 
-	$payment_status = $_POST['payment_status'];
+    $payment_status = $_POST['payment_status'];
     $txn_id = $_POST['txn_id'];
+    $receiver_email = $_POST['receiver_email'];
+    $payer_email = $_POST['payer_email'];
     
-	$receiver_email = $_POST['receiver_email'];
-	$payer_email = $_POST['payer_email'];
-	
-
-    
-    function database($db, $query){
-        if (isset($db) && isset($query)){
-            $connection = new mysqli('localhost', 'root', '20simonX15', $db);
-            if($connection->connect_errno > 0){
-                return("DB connect Error");
-            }
-            $sql = $query;
-            if(!$result = $connection->query($sql)){
-                return("Query Errno");
-            }
-        }
-        
-        else{
-            return("You fucking Idiot didn't gave a DB with.");
-        }
+    //I wrote a Function to connect.
+function database($db, $query){
+  $location = "localhost";
+  $username = "";
+  $password = "";
+  if (isset($db) && isset($query)){
+    $connection = new mysqli($location, $username, $password, $db);
+    if($connection->connect_errno > 0){
+      return("DB Connection Error");
     }
+    $sql = $query;
+    if(!$result = $connection->query($sql)){
+      return("SQL Querr Error");
+    }
+  }
+  else{
+    return("Idiot. You forgot to insert a Query or a DB-Name);
+  }
+}
     
-    if($payment_status == 'Completed'){
-        $insert = "INSERT INTO paypal_transactions (txn_id, payer_id, payment_status, receiver_mail, custom, txn_type, next_payment_date, time_created, reccuring_payment_id, amount, subscr_id) VALUES (\"".$txn_id."\", \"".$payer_id."\", \"".$payment_status."\", \"".$receiver_email."\", \"".$client."\", \"".$txn_type."\", \"".$next_payment_date."\", \"".$time_created."\", \"".$reccuring_payment_id."\", \"".$payment_amount."\", \"".$subscr_id."\");";
+   if($payment_status == 'Completed'){
+   	$insert = "INSERT INTO paypal_transactions (txn_id, payer_id, payment_status, receiver_mail, custom, txn_type, next_payment_date, time_created, reccuring_payment_id, amount, subscr_id) VALUES (\"".$txn_id."\", \"".$payer_id."\", \"".$payment_status."\", \"".$receiver_email."\", \"".$client."\", \"".$txn_type."\", \"".$next_payment_date."\", \"".$time_created."\", \"".$reccuring_payment_id."\", \"".$payment_amount."\", \"".$subscr_id."\");";
         database("froxlor", $insert);
-
-        
-
-        
-    }
-    else{
+  }
+  else{
         $insert = "INSERT INTO paypal_notifications (txn_id, payer_id, payment_status, receiver_mail, custom, txn_type, next_payment_date, time_created, reccuring_payment_id, amount) VALUES (\"".$txn_id."\", \"".$payer_id."\", \"".$payment_status."\", \"".$receiver_email."\", \"".$client."\", \"".$txn_type."\", \"".$next_payment_date."\", \"".$time_created."\", \"".$reccuring_payment_id."\", \"".$payment_amount."\", \"".$subscr_id."\");";
         database("froxlor", $insert);
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-	if(DEBUG == true) {
-		error_log(date('[Y-m-d H:i e] '). "Verified IPN: $req ". PHP_EOL, 3, LOG_FILE);
+  }
+  if(DEBUG == true) {
+	error_log(date('[Y-m-d H:i e] '). "Verified IPN: $req ". PHP_EOL, 3, LOG_FILE);
 	}
 } else if (strcmp ($res, "INVALID") == 0) {
 	// log for manual investigation
