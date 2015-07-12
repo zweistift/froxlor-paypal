@@ -1,3 +1,4 @@
+use froxlor;
 CREATE TABLE `froxlor`.`PP_ABO_TYPE` (
   `PK_ABO_ID` INT NOT NULL AUTO_INCREMENT,
   `ABO_KURZ` VARCHAR(10) NULL,
@@ -48,3 +49,18 @@ ALTER TABLE `froxlor`.`panel_customers`
     REFERENCES `froxlor`.`PP_ABO_TYPE` (`PK_ABO_ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+CREATE VIEW vKundenabos AS
+SELECT
+    C.customerid AS "Kundennummer",
+    C.name AS "Name",
+    C.firstname AS "Vorname",
+    A.ABO_KURZ AS "Abo Zeichen",
+    A.ABO_DESC AS "Abo Beschreibung",
+    A.ABO_COSTS_MTH AS "Abo Kosten",
+    C.PP_ABO_EXPIRE AS "EXPIRE",
+    C.PP_SUB_COMPLETE AS "SUBCOMPLETE",
+    C.PP_PAYPAL_CLIENT_ID AS "PAYPALID"
+FROM
+panel_customers AS C
+LEFT JOIN PP_ABO_TYPE AS A
+ON PK_ABO_ID = PP_ABO_TYPE;
