@@ -22,6 +22,11 @@ Create some subscription Buttons and save the code of the buttons place.
 <?php
 ?>
 ```
+![ScreenShot](https://raw.githubusercontent.com/zweistift/froxlor-paypal/master/img/screens.png)
+![ScreenShot](https://raw.githubusercontent.com/zweistift/froxlor-paypal/master/img/screens2.png)
+
+
+
 
 
 
