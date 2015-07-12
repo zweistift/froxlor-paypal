@@ -36,26 +36,51 @@ I also wrote a simpler PHP Function for mysql(i) - DB Access. It's a little simp
 ###Edit Area File
 Edit the *froxlor/customer_index.php* -File. It has some sections in it. Paste this code into the IF-Clause $page == 'overview'
 ```
-<?php
+
 if ($page == 'overview'){
-    
-    ...
+
+    ... froxlor-code
     
     $PP_info = getPayOverview($userinfo);
     
-    ...
-    
+    ... froxlor-code
 }
+```
+It will call the Function with the parameter $userinfo, Froxlor stores the userdata from the actual user in it. In the Function we gonna get the Data from the client and will put it in the variable $PP_Info
 
-?>
+###Post Variable in the Theme
+We have to define where our AddOn should appear:
+*froxlor/templates/Sparke/customer/index/* **index.tpl**
+
+Just post the variable between news feed and the Details Table
+```
+<div class="grid-u-1-2">
+    <If Settings::Get('customer.show_news_feed') == '1'>
+    ...
+    </if>
+    
+    $PP_Info
+    
+    <table class="dboarditem">
+    ...
 ```
 
 
 
+Froxlor will call the Client-Index-Theme and paste his variables in it. So we have 
 
 
 
 
+
+
+
+
+
+
+####Roadmap 08-01-15:
+* while creating Clients offer a ABO select schalter
+* autoupdate expire && payed state
 
 
 
