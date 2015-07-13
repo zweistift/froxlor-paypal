@@ -1,5 +1,5 @@
 # froxlor-paypal
-
+# *in development - not stable * 
 Hi!
 
 I created a AddOn for Foxlor with wich you can enable PayPal subscriptions for Clients. Your clients can log into their accounts, can press "Subscripe with Paypal" and it automaticly shows them if their hosting-subscription is paid.
