@@ -64,7 +64,7 @@
         $abo_desc = $_POST['description'];
         $abo_costs_mth = $_POST['costs'];
         $abo_paypal_code = $_POST['paypal'];
-        if(isset($_POST['costy'];)){
+        if(isset($_POST['costy'])){
             $abo_costs_year = $_POST['costy'];
         }
         $abo_stmt = Database::prepare("INSERT INTO PP_ABO_TYPE (ABO_KURZ, ABO_DESC, ABO_COSTS_MTH, ABO_PAYPAL_CODE) VALUES ('".$abo_kurz."', '".$abo_desc."', '".$abo_costs_mth."', '".$abo_paypal_code."')");
@@ -102,7 +102,7 @@
         $abo_desc = $_POST['description'];
         $abo_costs_mth = $_POST['costs'];
         $abo_paypal_code = $_POST['paypal'];
-        if(isset($_POST['costy'];)){
+        if(isset($_POST['costy'])){
             $abo_costs_year = $_POST['costy'];
         }
         if(isset($id)){
@@ -138,7 +138,7 @@
                 $pp_sub_completed = "aktiv";
             }
             //$id = $idna_convert->decode($row['aboid']);
-            eval("echo \"".getTemplate("modules/paypal/overiview-element")."\";");
+            eval("echo \"".getTemplate("modules/paypal/overview-element")."\";");
         }
 		eval("echo \"".getTemplate("modules/paypal/overview-bottom")."\";");
 	}
@@ -209,6 +209,7 @@
     //If I forgot something: just redirect :)
     else{
         $umleitung = $linker->getLink(array('section' => 'paypal', 'page' => $page));
-        header('Location: '.$umleitung.'');
+        //header('Location: '.$umleitung.'');
     }
+    
 ?>

@@ -10,7 +10,7 @@ $header
 		<section>
 <div class="overviewadd">
 					<img src="templates/{$theme}/assets/img/icons/add.png" alt="" />&nbsp;
-					<a href="{$linker->getLink(array('section' => 'billing', 'page' => $page, 'action' => 'add'))}">{$lng['plugin']['paypal']['addabo']}</a>
+					<a href="{$linker->getLink(array('section' => 'subscription', 'page' => $page, 'action' => 'add'))}">{$lng['plugin']['paypal']['addabo']}</a>
 				</div>
 <table class="full hl">
 <th>ABO ID</th><th>ABO CODE</th><th>ABO DESCRIPTION</th><th>ABO COSTS MONTH</th><th>ABO COSTS YEAR</th><th>Optionen</th>

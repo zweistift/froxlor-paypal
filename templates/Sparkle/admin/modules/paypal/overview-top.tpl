@@ -3,7 +3,7 @@ $header
 		<header>
 			<h2>
 				<img src="templates/{$theme}/assets/img/icons/group_edit_big.png" alt="" /> 
-                Ueberblick {$lng['plugin']['paypal']['abos']}
+                Ueberblick
 			</h2>
 		</header>
 
