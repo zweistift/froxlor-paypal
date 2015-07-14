@@ -21,7 +21,7 @@ You have to create PayPal-Subscription Abos in your enterprise PayPal account.
 You have to register he same subscriptions in froxlor with the PayPal Subscription Codes (PayPal Button Code).
 So you'll register a Client and add a subscription. Next time your client will log in he see's the PayPal button. He subscribe the product then. If a subscription is done, PayPal will send a IPN (you have to tell the url of the listener to PayPal.) Froxlor takes the IPN and will set the customer as payed an expire date of a month. When PayPal bills the client next time, another IPN will send and your clients account automatically update his expire date.
 
-#Installtion
+#Installation
 
 ##Prerequisites
 Please make sure that you use the latest stable version of Froxlor (actually it is v.0.9.33).

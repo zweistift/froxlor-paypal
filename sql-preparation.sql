@@ -49,6 +49,11 @@ ALTER TABLE `froxlor`.`panel_customers`
     REFERENCES `froxlor`.`PP_ABO_TYPE` (`PK_ABO_ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+INSERT INTO `froxlor`.`panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('paypal', 'enabled', '1');
+
+
+
+
 CREATE VIEW vKundenabos AS
 SELECT
     C.customerid AS "Kundennummer",
