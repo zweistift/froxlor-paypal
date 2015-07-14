@@ -1839,3 +1839,71 @@ $lng['usersettings']['custom_notes']['show'] = 'Show your notes on the dashboard
 $lng['serversettings']['system_send_cron_errors']['title'] = 'Send cron-errors to froxlor-admin via e-mail';
 $lng['serversettings']['system_send_cron_errors']['description'] = 'Chose whether you want to receive an e-mail on cronjob errors. Keep in mind that this can lead to an e-mail being sent every 5 minutes depending on the error and your cronjob settings.';
 $lng['error']['fcgidandphpfpmnogoodtogether'] = 'FCGID and PHP-FPM cannot be activated at the same time';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Plugin
+$lng['plugin']['paypal']['billing'] = 'invoices';
+$lng['plugin']['paypal']['status'] = 'status';
+$lng['plugin']['paypal']['invoices'] = 'invoices';
+$lng['plugin']['paypal']['details'] = 'details';
+$lng['plugin']['paypal']['overview'] = 'overview';
+$lng['plugin']['paypal']['notifications'] = 'notifications';
+$lng['plugin']['paypal']['abos'] = "subscriptions";
+$lng['plugin']['paypal']['addabo'] = "add subscription";
+
+
+$lng['modules']['paypal']['navtitle'] = "PayPal AddIn";
+$lng['modules']['paypal']['invoices'] = "invoices";
+$lng['modules']['paypal']['details'] = "details";
+$lng['modules']['paypal']['navtitle'] = "invoices";
+$lng['modules']['paypal']['overview'] = "overview";
+$lng['modules']['paypal']['invoices'] = "invoices";
+$lng['modules']['paypal']['notifications'] ="notifications";
+$lng['modules']['paypal']['subscriptions'] ="subscriptions";
+
+
+$lng['modules']['paypal']['editclientsubs'] = "Edit client subscriptions";
+
+$lng['modules']['paypal']['client'] = "customer";
+$lng['modules']['paypal']['name'] = "name";
+$lng['modules']['paypal']['firstname'] = "firstname";
+$lng['modules']['paypal']['company'] = "company";
+$lng['modules']['paypal']['username'] = "username";
+$lng['modules']['paypal']['abodeltewarning'] ="Please be carful. If you change a subscription you have to cancle the subscription at PayPal.";
+
+$lng['modules']['paypal']['clientnumber'] = "number";
+$lng['modules']['paypal']['username'] = "username";
+$lng['modules']['paypal']['name'] = "name";
+$lng['modules']['paypal']['firstname'] = "firstname";
+$lng['modules']['paypal']['company'] = "company";
+$lng['modules']['paypal']['paypalclientid'] = "PayPal Client ID";
+$lng['modules']['paypal']['subscription'] = "subscription";
+$lng['modules']['paypal']['status'] = "status";
+$lng['modules']['paypal']['expiredate'] = "expiredate";
+$lng['modules']['paypal']['options'] = "options";
+$lng['modules']['paypal']['subadd'] = "Add Subscription";
+$lng['modules']['paypal']['subs'] = "Subscriptions";
+
+$lng['modules']['paypal']['subsid'] = "Subscription ID";
+$lng['modules']['paypal']['subscode'] = "subscription Code";
+$lng['modules']['paypal']['subsdesc'] = "subscription Bezeichnung";
+$lng['modules']['paypal']['subscostm'] = "Costs monthly";
+$lng['modules']['paypal']['subscosty'] = "Costs yearly";
+
+
