@@ -1,22 +1,18 @@
 <?php
     define('AREA', 'admin');
-	/**
-	 * Include our init.php, which manages Sessions, Language etc.
-	 */
 	require("./lib/init.php");
-	
 	//Ist eine ID gesetzt?
-	if(isset($_POST['id']))
-	{	$id=intval($_POST['id']);
+	if(isset($_POST['id'])){
+        $id=intval($_POST['id']);
 	}
-	elseif(isset($_GET['id']))
-	{	$id=intval($_GET['id']);
+	elseif(isset($_GET['id'])){
+        $id=intval($_GET['id']);
 	}
-	
-    if($page == "abos" && $action == NULL)
-	{	//todo!
-        //$result= $db->query('SELECT * FROM PP_ABO_TYPE');
-        //$result= $db->query('SELECT * FROM panel_payment_abo');    
+    
+    //MAIN PART
+    
+    //Page: Subscriptions Ueberblick
+    if($page == "subscriptions" && $action == NULL){	  
         eval("echo \"".getTemplate("modules/paypal/abos-top")."\";");
         $aboinfo= array();
         $aboinfo['pk_abo_id'] = "";  
@@ -34,31 +30,29 @@
         }
 		eval("echo \"".getTemplate("modules/paypal/abos-bottom")."\";");
 	}
-    elseif($page == "abos" && $action == "delete" && !isset($_POST['send'])){
+    
+    //Page: Subscriptions -> delete::Are you sure?
+    elseif($page == "subscriptions" && $action == "delete" && !isset($_POST['send'])){
         $pk_abo_id = $_GET['id'];
         //Abfrage ob man wirklich loeschen will??
         $warnung = "M&ouml;chten Sie das Abo wirklich l&ouml;schen?<br><br>";
         $LINK = $linker->getLink(array('section' => 'billing', 'page' => $page, 'action' => 'delete', 'id' => $pk_abo_id));
         ask_yesno($warnung, $LINK, array('id'=>$id, 'send'=>'send'));  
     }
-    elseif($page == "abos" && $action == "delete" && isset($_POST['send']) && $_POST['send'] == 'send'){
-        //loeschen genehmigt.
+    
+    //Page: Subscriptions -> delte::commited
+    elseif($page == "subscriptions" && $action == "delete" && isset($_POST['send']) && $_POST['send'] == 'send'){
         $pk_abo_id = $_GET['id'];
-        //SQL Code zum loeschen hier platzieren.
-        $aboinfo['pk_abo_id'] = "";
-				
-        //!to be fixed: If a subscription exist for a user, you can't delte an abo...
-        //Database::pexecute($domains_stmt, array('cid' => $row['customerid'], 'stdd' => $row['standardsubdomain']));
-        //$domains = $domains_stmt->fetch(PDO::FETCH_ASSOC);
-        //$row['domains'] = intval($domains['domains']);
-        
-        
+        $aboinfo['pk_abo_id'] = "";	
+        //!to be fixed: If a subscription exist for a user, you should not delete it.
         $abo_stmt = Database::prepare("DELETE FROM panel_payment_abo WHERE PK_ABO_ID = '".$pk_abo_id."' ");
         Database::pexecute($abo_stmt, array('id' => $id));
         $umleitung = $linker->getLink(array('section' => 'billing', 'page' => $page));
         header('Location: '.$umleitung.'');
     }
-    elseif($page == "abos" && $action == "add" && !isset($_POST['send'])){
+    
+    //Page: Subscriptions -> add::Form
+    elseif($page == "subscriptions" && $action == "add" && !isset($_POST['send'])){
         //anzeige Formular zum machen oder so.
         $customer_add_data = include_once dirname(__FILE__).'/lib/formfields/admin/modules/formfield.abo_add.php';
         $customer_add_form = htmlform::genHTMLForm($customer_add_data);
@@ -67,8 +61,9 @@
         
 		eval("echo \"".getTemplate("modules/paypal/abos-bottom")."\";");
     }
-    elseif($page == "abos" && $action == "add" && isset($_POST['send']) && $_POST['send'] = 'send'){
-        
+    
+    //Page: Subscriptions -> add:save
+    elseif($page == "subscriptions" && $action == "add" && isset($_POST['send']) && $_POST['send'] = 'send'){
         $code = $_POST['code'];
         $description = $_POST['description'];
         $costs = $_POST['costs'];
@@ -77,16 +72,14 @@
             $yearset = true;
         }
         $paypal = $_POST['paypal'];
-        
         $abo_stmt = Database::prepare("INSERT INTO panel_payment_abo (ABO_KURZ, ABO_DESC, ABO_COSTS_MTH, PayPal_Code) VALUES ('".$code."', '".$description."', '".$costs."', '".$paypal."')");
         Database::pexecute($abo_stmt, array('id' => $id));
-        
         $umleitung = $linker->getLink(array('section' => 'billing', 'page' => $page));
         header('Location: '.$umleitung.'');
-        
-        
     }
-    elseif($page == "abos" && $action == "edit" && $_GET['state'] == 'edit'){
+    
+    //Page: Subscriptions -> edit::Form
+    elseif($page == "subscriptions" && $action == "edit" && $_GET['state'] == 'edit'){
         $id = $_GET['id'];
         $aboinfo= array();
         $aboinfo['pk_abo_id'] = "";  
@@ -100,15 +93,15 @@
             $abo_costs_mth = $row["ABO_COSTS_MTH"];
             $abo_costs_year = $row["ABO_COSTS_YEAR"];
             $paypal = $row["PayPal_Code"];
-            //$id = $idna_convert->decode($row['aboid']);
         }
         $customer_add_data = include_once dirname(__FILE__).'/lib/formfields/admin/modules/formfield.abo_edit.php';
         $customer_add_form = htmlform::genHTMLForm($customer_add_data);
         eval("echo \"".getTemplate("modules/paypal/abos_edit")."\";");
-        
 		eval("echo \"".getTemplate("modules/paypal/abos-bottom")."\";");
     }
-    elseif($page == "abos" && $action == "edit" && $_GET['state'] == 'save' && $_POST['send'] == 'send'){
+    
+    //Page: Subscriptions -> edit::save
+    elseif($page == "subscriptions" && $action == "edit" && $_GET['state'] == 'save' && $_POST['send'] == 'send'){
         if(isset($_GET['id'])){$id = $_GET['id'];}
         if(isset($_POST['id'])){$id = $_POST['id'];}
         $code = $_POST['code'];
@@ -119,20 +112,18 @@
             $yearset = true;
         }
         $paypal = $_POST['paypal'];
-        
         if(isset($id)){
-        $abo_stmt = Database::prepare("UPDATE panel_payment_abo SET ABO_KURZ = '".$code."', ABO_DESC = '".$description."' , ABO_COSTS_MTH = '".$costs."' , PayPal_Code = '".$paypal."' WHERE PK_ABO_ID=\"".$id."\"");
-        Database::pexecute($abo_stmt, array('id' => $id));
+            $abo_stmt = Database::prepare("UPDATE panel_payment_abo SET ABO_KURZ = '".$code."', ABO_DESC = '".$description."' , ABO_COSTS_MTH = '".$costs."' , PayPal_Code = '".$paypal."' WHERE PK_ABO_ID=\"".$id."\"");
+            Database::pexecute($abo_stmt, array('id' => $id));
         }
         $umleitung = $linker->getLink(array('section' => 'billing', 'page' => $page));
         header('Location: '.$umleitung.'');
-        
-        
     }
-    if($page == "overview" && $action == NULL)
-	{	//todo!
-        //$result= $db->query('SELECT * FROM PP_ABO_TYPE');
-        //$result= $db->query('SELECT * FROM panel_payment_abo');    
+    
+    
+
+    //Page: Overview Clients
+    if($page == "overview" && $action == NULL){  
         eval("echo \"".getTemplate("modules/paypal/customer-top")."\";");
         $aboinfo= array();
         $aboinfo['customerid'] = "";  
@@ -158,6 +149,8 @@
         }
 		eval("echo \"".getTemplate("modules/paypal/customer-bottom")."\";");
 	}
+
+    //Page: Overview -> delete::sure?
     elseif($page == "overview" && $action == "delete" && !isset($_POST['send'])){
         //NUR ABO entfernen ++ Abfrage ob man das wirklich will??
         //Abfrage ob man wirklich loeschen will??
@@ -165,57 +158,18 @@
         $LINK = $linker->getLink(array('section' => 'billing_overview', 'page' => $page, 'action' => 'delete', 'id' => $id));
         ask_yesno($warnung, $LINK, array('id'=>$id, 'send'=>'send'));  
     }
+    
+    //Page: Overview -> delte::comitted
     elseif($page == "overview" && $action == "delete" && isset($_POST['send']) && $_POST['send'] == 'send'){
-        //loeschen genehmigt.
-        //SQL Code zum loeschen hier platzieren.
         $aboinfo['id'] = "";
-				
-        //!to be fixed: If a subscription exist for a user, you can't delte an abo...
-        //Database::pexecute($domains_stmt, array('cid' => $row['customerid'], 'stdd' => $row['standardsubdomain']));
-        //$domains = $domains_stmt->fetch(PDO::FETCH_ASSOC);
-        //$row['domains'] = intval($domains['domains']);
-        
-        
         $abo_stmt = Database::prepare("UPDATE panel_customers SET hdl_abo_expire = NULL, hdl_abo_payed = '0', hdl_abo_type = NULL  WHERE customerid = ".$id." ");
         Database::pexecute($abo_stmt, array('id' => $id));
         $umleitung = $linker->getLink(array('section' => 'billing_overview', 'page' => $page));
         header('Location: '.$umleitung.'');
     }
-
-
-
-    elseif($page == "overview" && $action == "add" && !isset($_POST['send'])){
-        //anzeige Formular zum machen oder so.
-        $customer_add_data = include_once dirname(__FILE__).'/lib/formfields/admin/modules/formfield.abo_add.php';
-        $customer_add_form = htmlform::genHTMLForm($customer_add_data);
-        
-        eval("echo \"".getTemplate("modules/paypal/abos_add")."\";");
-        
-		eval("echo \"".getTemplate("modules/paypal/abos-bottom")."\";");
-    }
-    elseif($page == "overview" && $action == "add" && isset($_POST['send']) && $_POST['send'] = 'send'){
-        
-        $code = $_POST['code'];
-        $description = $_POST['description'];
-        $costs = $_POST['costs'];
-        if(isset($_POST['costy'])){
-            $costy = $_POST['costy'];
-            $yearset = true;
-        }
-        $paypal = $_POST['paypal'];
-        
-        $abo_stmt = Database::prepare("INSERT INTO panel_payment_abo (ABO_KURZ, ABO_DESC, ABO_COSTS_MTH, PayPal_Code) VALUES ('".$code."', '".$description."', '".$costs."', '".$paypal."')");
-        Database::pexecute($abo_stmt, array('id' => $id));
-        
-        $umleitung = $linker->getLink(array('section' => 'billing', 'page' => $page));
-        header('Location: '.$umleitung.'');
-        
-        
-    }
-
+    
+    //Page: Overview -> edit_customer_subscription::Form
     elseif($page == "overview" && $action == "edit" && !isset($_POST['send'])){
-        //aenderungenformular anzeigen
-        //anzeige Formular zum machen oder so.
         $subs= array();
         $subs['customerid'] = "";  
         $abo_stmt = Database::prepare("SELECT customerid, loginname, name, firstname, company, hdl_abo_type FROM panel_customers WHERE customerid = '".$id."'");
@@ -227,9 +181,7 @@
             $company = $row['company'];
             $username = $row['loginname'];
             $abo = $row['hdl_abo_type'];
-        }
-        
-        
+        }     
         $subs= array();
         $subs['customerid'] = "";  
         $abo_stmt = Database::prepare("SELECT PK_ABO_ID, ABO_DESC FROM panel_payment_abo");
@@ -244,39 +196,24 @@
             $abo_options .= makeoption($row['ABO_DESC'], $row['PK_ABO_ID'], null, true, true);
             }
         }
-        
-        
-        
-        
-        
-        
         $customer_add_data = include_once dirname(__FILE__).'/lib/formfields/admin/modules/formfield.customer_aboedit.php';
         $customer_add_form = htmlform::genHTMLForm($customer_add_data);
-        
         eval("echo \"".getTemplate("modules/paypal/customerabo_edit")."\";");
-        
 		eval("echo \"".getTemplate("modules/paypal/customer-bottom")."\";");
     }
+    
+    //Page: Overview -> edit_customer_subscription::save
     elseif($page == "overview" && $action == "edit" && isset($_POST['send']) && $_POST['send'] = 'send'){
         //formular aenderungen speichern...
         $abowish = $_POST['abo-wish'];
         $paypal = $_POST['paypal'];
-        
-        
         $abo_stmt = Database::prepare("UPDATE panel_customers SET hdl_abo_type = '".$abowish."' WHERE customerid = '".$id."'");
         Database::pexecute($abo_stmt, array('id' => $id));
-        
-        
         $umleitung = $linker->getLink(array('section' => 'billing_overview', 'page' => $page));
         header('Location: '.$umleitung.'');
-        
-        
     }
 
-
-
-
-
+    //If I forgot something: just redirect :)
     else{
         $umleitung = $linker->getLink(array('section' => 'billing', 'page' => $page));
         header('Location: '.$umleitung.'');
