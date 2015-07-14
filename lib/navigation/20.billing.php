@@ -52,7 +52,7 @@ return array (
 					'label' => $lng['modules']['paypal']['notifications'],
 				),
                 array (
-					'url' => 'admin_paypal.php?page=abos',
+					'url' => 'admin_paypal.php?page=subscriptions',
 					'label' => $lng['modules']['paypal']['subscriptions'],
 				),
 			),

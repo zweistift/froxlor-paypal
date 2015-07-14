@@ -1578,3 +1578,21 @@ $lng['plugin']['paypal']['overview'] = 'Ueberblick';
 $lng['plugin']['paypal']['notifications'] = 'Notifications';
 $lng['plugin']['paypal']['abos'] = "Abos";
 $lng['plugin']['paypal']['addabo'] = "Abo Anlegen";
+
+
+$lng['modules']['paypal']['navtitle'] = "PayPal Modul";
+$lng['modules']['paypal']['invoices'] = "Abrechnungen";
+$lng['modules']['paypal']['details'] = "Details";
+$lng['modules']['paypal']['navtitle'] = "Rechnungen";
+$lng['modules']['paypal']['overview'] = "U&uuml;berblick";
+$lng['modules']['paypal']['invoices'] = "Abrechnungen";
+$lng['modules']['paypal']['notifications'] ="Benachrichtigungen";
+$lng['modules']['paypal']['subscriptions'] ="Abonnements";
+?>
+
+
+
+
+
+
+

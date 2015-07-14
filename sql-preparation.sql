@@ -51,7 +51,7 @@ ALTER TABLE `froxlor`.`panel_customers`
     ON UPDATE NO ACTION;
 INSERT INTO `froxlor`.`panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('paypal', 'enabled', '1');
 
-
+/*
 
 
 CREATE VIEW vKundenabos AS
@@ -69,3 +69,4 @@ FROM
 panel_customers AS C
 LEFT JOIN PP_ABO_TYPE AS A
 ON PK_ABO_ID = PP_ABO_TYPE;
+*/
