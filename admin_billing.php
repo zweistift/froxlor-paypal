@@ -5,7 +5,7 @@
 	 */
 	require("./lib/init.php");
 	
-	
+	//Ist eine ID gesetzt?
 	if(isset($_POST['id']))
 	{	$id=intval($_POST['id']);
 	}
@@ -13,18 +13,6 @@
 	{	$id=intval($_GET['id']);
 	}
 	
-	if($page == "overview")
-	{	//todo!	
-		eval("echo \"".getTemplate("modules/paypal/overview")."\";");
-	}
-    if($page == "invoices")
-	{	//todo!	
-		eval("echo \"".getTemplate("modules/paypal/overview")."\";");
-	}
-    if($page == "notifications")
-	{	//todo!	
-		eval("echo \"".getTemplate("modules/paypal/overview")."\";");
-	}
     if($page == "abos" && $action == NULL)
 	{	//todo!
         //$result= $db->query('SELECT * FROM PP_ABO_TYPE');
@@ -58,13 +46,6 @@
         $pk_abo_id = $_GET['id'];
         //SQL Code zum loeschen hier platzieren.
         $aboinfo['pk_abo_id'] = "";
-        $domains_stmt = Database::prepare("
-					SELECT COUNT(`id`) AS `domains`
-					FROM `" . TABLE_PANEL_DOMAINS . "`
-					WHERE `customerid` = :cid
-					AND `parentdomainid` = '0'
-					AND `id`<> :stdd"
-				);
 				
         //!to be fixed: If a subscription exist for a user, you can't delte an abo...
         //Database::pexecute($domains_stmt, array('cid' => $row['customerid'], 'stdd' => $row['standardsubdomain']));
