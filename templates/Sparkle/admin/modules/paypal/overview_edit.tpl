@@ -52,4 +52,5 @@ $header
 			</p>
 		</section>
 	</article>
-
+</table>
+$footer
