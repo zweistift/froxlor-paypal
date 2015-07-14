@@ -24,11 +24,11 @@ return array (
 			'show_element' => ( Settings::Get('paypal.enabled') == true ),
 			'elements' => array (
                 array (
-					'url' => 'customer_paypal_invoices.php?page=invoices',
+					'url' => 'customer_paypal.php?page=invoices',
 					'label' => $lng['modules']['paypal']['invoices'],
 				),
                 array (
-					'url' => 'customer_paypal_details.php?page=details',
+					'url' => 'customer_paypal.php?page=details',
 					'label' => $lng['modules']['paypal']['details'],
 				),
 			),
@@ -40,19 +40,19 @@ return array (
 			'show_element' => ( Settings::Get('paypal.enabled') == true ),
 			'elements' => array (
 				array (
-					'url' => 'admin_billing_overview.php?page=overview',
+					'url' => 'admin_paypal.php?page=overview',
 					'label' => $lng['modules']['paypal']['overview'],
 				),
 				array (
-					'url' => 'admin_billing.php?page=invoices',
+					'url' => 'admin_paypal.php?page=invoices',
 					'label' => $lng['modules']['paypal']['invoices'],
 				),
 				array (
-					'url' => 'admin_billing.php?page=notifications',
+					'url' => 'admin_paypal.php?page=notifications',
 					'label' => $lng['modules']['paypal']['notifications'],
 				),
                 array (
-					'url' => 'admin_billing.php?page=abos',
+					'url' => 'admin_paypal.php?page=abos',
 					'label' => $lng['modules']['paypal']['subscriptions'],
 				),
 			),
