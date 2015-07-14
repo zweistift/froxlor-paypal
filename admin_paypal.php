@@ -24,7 +24,7 @@
             $abo_kurz = $row["ABO_KURZ"];
             $abo_desc = $row["ABO_DESC"];
             $abo_costs_mth = $row["ABO_COSTS_MTH"];
-            $abo_costs_year = $row["ABO_COSTS_YEAR"];
+            $abo_costs_year = $row["ABO_COSTS_YEAR"] * 12;
             $abo_paypal_code = $row["ABO_PAYPAL_CODE"];
             //$id = $idna_convert->decode($row['aboid']);
             eval("echo \"".getTemplate("modules/paypal/subscription-element")."\";");

@@ -8,7 +8,7 @@ $header
 		</header>
 
 		<section>
-			<form action="{$linker->getLink(array('section' => 'billing', 'page' => 'abos', 'action' => 'insert'))}" method="post" enctype="application/x-www-form-urlencoded">
+			<form action="{$linker->getLink(array('section' => 'paypal', 'page' => 'subscriptions', 'action' => 'insert'))}" method="post" enctype="application/x-www-form-urlencoded">
 				<input type="hidden" name="s" value="$s" />
 				<input type="hidden" name="page" value="$page" />
 				<input type="hidden" name="action" value="$action" />
