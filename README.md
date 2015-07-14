@@ -1,20 +1,25 @@
 # froxlor-paypal
-# *in development - not stable * 
-Update is prepared - fully Account-Management will be integrated with some better PayPal Functions...
+### *in development - not stable * 
 ----------
-
+###### note: I'm german, so maybe some files will have names in german, i'll change that when the project is done.
 
 Hi!
 
 I created a AddOn for Foxlor with wich you can enable PayPal subscriptions for Clients. Your clients can log into their accounts, can press "Subscripe with Paypal" and it automaticly shows them if their hosting-subscription is paid.
 
-After implementation it looks like this:
+After implementation it looks like this (Client Mode):
 
 #####User's monthly rate is not paid:
 ![ScreenShot](https://raw.githubusercontent.com/zweistift/froxlor-paypal/master/img/screens.png)
 
 #####User's monthly rate is paid, it offers to cancel the subscription:
 ![ScreenShot](https://raw.githubusercontent.com/zweistift/froxlor-paypal/master/img/screens2.png)
+
+#How it Works
+You're able to create subscriptions for your clients via Paypal. Paylal will do all payment-stuff.
+You have to create PayPal-Subscription Abos in your enterprise PayPal account.
+You have to register he same subscriptions in froxlor with the PayPal Subscription Codes (PayPal Button Code).
+So you'll register a Client and add a subscription. Next time your client will log in he see's the PayPal button. He subscribe the product then. If a subscription is done, PayPal will send a IPN (you have to tell the url of the listener to PayPal.) Froxlor takes the IPN and will set the customer as payed an expire date of a month. When PayPal bills the client next time, another IPN will send and your clients account automatically update his expire date.
 
 #Installtion
 
