@@ -90,4 +90,9 @@ Froxlor will call the Client-Index-Theme and paste his variables in it. So we ha
 
 
 
+###Licence
+Please notice that I don't offer any source-code from Froxlor, It's just an AddOn wich you can self-integrate. 
+You're not allowed to sell it under your name! ..
+
+
 
