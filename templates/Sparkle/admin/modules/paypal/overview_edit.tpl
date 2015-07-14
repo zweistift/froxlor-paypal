@@ -3,7 +3,7 @@ $header
 		<header>
 			<h2>
 				<img src="templates/{$theme}/assets/img/icons/user_add_big.png" alt="abos anlegen" />&nbsp;
-				Kundenabos bearbeiten
+				$lng[modules][paypal][editclientsubs]
 			</h2>
 		</header>
 
@@ -16,25 +16,25 @@ $header
 				<table class="full">
                     <tbody>
                     <tr class="section">
-                        <th colspan="3">Kunde</th>    
+                        <th colspan="3">$lng['modules']['paypal']['client']</th>    
                     </tr>
                     <tr>
-                        <td>Name</td><td>$name</td> 
+                        <td>$lng['modules']['paypal']['name']</td><td>$name</td> 
                     </tr>
                     <tr>
-                        <td>Vorname</td><td>$firstname</td> 
+                        <td>$lng['modules']['paypal']['firstname']</td><td>$firstname</td> 
                     </tr>
                     <tr>
-                        <td>Firma</td><td>$company</td> 
+                        <td>$lng['modules']['paypal']['company']</td><td>$company</td> 
                     </tr>
                     <tr>
-                        <td>Benutzername</td><td>$username</td> 
+                        <td>$lng['modules']['paypal']['username']</td><td>$username</td> 
                     </tr>                        
                     </tbody>
                 </table>
                 
                 <br>
-                <p style="color: red !important; font-weight: bold">Bitte denken Sie daran, das PAYPAL ABO vorher zu kuendigen! der Client wird ansonsten doppelt belastet!</p>
+                <p style="color: red !important; font-weight: bold">$lng['modules']['paypal']['abodeletewarning']</p>
                 <br>
 				<table class="full">
                     {$customer_add_form}

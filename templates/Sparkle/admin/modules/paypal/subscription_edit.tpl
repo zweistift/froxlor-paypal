@@ -3,8 +3,7 @@ $header
 		<header>
 			<h2>
 				<img src="templates/{$theme}/assets/img/icons/user_add_big.png" alt="abos anlegen" />&nbsp;
-				Abos anlegen
-			</h2>
+$lng['modules']['paypal']['subadd']			</h2>
 		</header>
 
 		<section>

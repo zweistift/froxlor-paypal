@@ -3,7 +3,7 @@ $header
 		<header>
 			<h2>
 				<img src="templates/{$theme}/assets/img/icons/group_edit_big.png" alt="" /> 
-				{$lng['plugin']['paypal']['abos']}
+				{$lng['modules']['paypal']['subs']}
 			</h2>
 		</header>
 
@@ -13,5 +13,5 @@ $header
 					<a href="{$linker->getLink(array('section' => 'subscription', 'page' => $page, 'action' => 'add'))}">{$lng['plugin']['paypal']['addabo']}</a>
 				</div>
 <table class="full hl">
-<th>ABO ID</th><th>ABO CODE</th><th>ABO DESCRIPTION</th><th>ABO COSTS MONTH</th><th>ABO COSTS YEAR</th><th>Optionen</th>
+<th>$lng['modules']['paypal']['subsid']</th><th>$lng['modules']['paypal']['subscode']</th><th>$lng['modules']['paypal']['subsdesc']</th><th>$lng['modules']['paypal']['subscostm']</th><th>$lng['modules']['paypal']['subscosty']</th><th>$lng['modules']['paypal']['options']</th>
 

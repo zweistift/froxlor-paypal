@@ -1588,6 +1588,41 @@ $lng['modules']['paypal']['overview'] = "U&uuml;berblick";
 $lng['modules']['paypal']['invoices'] = "Abrechnungen";
 $lng['modules']['paypal']['notifications'] ="Benachrichtigungen";
 $lng['modules']['paypal']['subscriptions'] ="Abonnements";
+
+
+$lng['modules']['paypal']['editclientsubs'] = "Kundenabos bearbeiten";
+
+$lng['modules']['paypal']['client'] = "Kunde";
+$lng['modules']['paypal']['name'] = "Name";
+$lng['modules']['paypal']['firstname'] = "Vorname";
+$lng['modules']['paypal']['company'] = "Firma";
+$lng['modules']['paypal']['username'] = "Benutzername";
+$lng['modules']['paypal']['abodeltewarning'] ="Bitte denken Sie daran: Bei einem Abo-Wechsel muss das PayPal abo in der PayPal Konsole gekuendigt werden. Ansonsten wird der Kunde doppelt belastet!";
+$lng['modules']['paypal']['overview'] ="&Uuml;berblick";
+
+$lng['modules']['paypal']['clientnumber'] = "Nummer";
+$lng['modules']['paypal']['username'] = "Benutzername";
+$lng['modules']['paypal']['name'] = "Name";
+$lng['modules']['paypal']['firstname'] = "Vorname";
+$lng['modules']['paypal']['company'] = "Firma";
+$lng['modules']['paypal']['paypalclientid'] = "PayPal Client ID";
+$lng['modules']['paypal']['subscription'] = "Abo";
+$lng['modules']['paypal']['status'] = "Status";
+$lng['modules']['paypal']['expiredate'] = "Auslaufdatum";
+$lng['modules']['paypal']['options'] = "Optionen";
+$lng['modules']['paypal']['subadd'] = "Abos anlegen";
+$lng['modules']['paypal']['subs'] = "Abos";
+
+$lng['modules']['paypal']['subsid'] = "Abo ID";
+$lng['modules']['paypal']['subscode'] = "Abo Code";
+$lng['modules']['paypal']['subsdesc'] = "Abo Bezeichnung";
+$lng['modules']['paypal']['subscostm'] = "Kosten pro Monat";
+$lng['modules']['paypal']['subscosty'] = "Kosten pro Jahr";
+
+
+
+
+
 ?>
 
 
